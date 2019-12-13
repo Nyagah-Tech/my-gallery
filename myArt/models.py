@@ -11,4 +11,7 @@ class Gallery(models.Model):
     name = models.CharField(max_length = 50)
     owner = models.ForeignKey(Owner, on_delete = models.CACSCADE)
     picture = models.ImageField()
-    
+    location = models.ForeignKey(Location, on_delete = models.CACSCADE)
+
+class Location(models.Model):
+    location = models.CharField(max_length = 50)
