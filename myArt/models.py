@@ -6,7 +6,10 @@ class Owner(models.Model):
     last_name = models.CharField(max_length = 50)
     email = model.EmailField()
 
-    
+
+    def __str__(self):
+        return self.first_name
+
 
 class Gallery(models.Model):
     description = models.TextField()
@@ -15,6 +18,11 @@ class Gallery(models.Model):
     picture = models.ImageField()
     location = models.ForeignKey(Location, on_delete = models.CACSCADE)
     category = models.ForeignKey(Category, on_delete = models.CACSCADE)
+
+
+
+    def __str__(self):
+        return self.name
 
 class Location(models.Model):
     location = models.CharField(max_length = 50)
