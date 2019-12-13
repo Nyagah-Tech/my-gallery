@@ -6,6 +6,8 @@ class Owner(models.Model):
     last_name = models.CharField(max_length = 50)
     email = model.EmailField()
 
+    
+
 class Gallery(models.Model):
     description = models.TextField()
     name = models.CharField(max_length = 50)
