@@ -15,14 +15,21 @@ class Owner(models.Model):
 class Location(models.Model):
     location = models.CharField(max_length = 50)
 
+    def __str__(self):
+        return self.location
+
 class Category(models.Model):
     category = models.CharField(max_length = 100)
+
+    def __str__(self):
+        return self.category
+
 
 class Gallery(models.Model):
     description = models.TextField()
     name = models.CharField(max_length = 50)
     owner = models.ForeignKey(Owner, on_delete = models.CASCADE)
-    picture = models.ImageField()
+    picture = models.ImageField(upload_to = 'images/')
     location = models.ForeignKey(Location, on_delete = models.CASCADE)
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
     posted_by = models.DateTimeField(dt.datetime.now())
@@ -43,6 +50,7 @@ class Gallery(models.Model):
     def get_images_by_location(cls,locations):
         images = cls.objects.filter(location = locations)
 
+        return images
     def __str__(self):
         return self.name
 
