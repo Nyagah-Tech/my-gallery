@@ -51,6 +51,15 @@ class Gallery(models.Model):
         images = cls.objects.filter(location = locations)
 
         return images
+
+    @classmethod
+    def get_image_by_id(cls,id):
+        image = cls.objects.filter(id = id)
+
+        return image
+
+
+
     def __str__(self):
         return self.name
 
