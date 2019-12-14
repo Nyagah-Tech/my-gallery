@@ -1,0 +1,25 @@
+.nav{
+    background-color: black;
+    color:silver;
+    
+  }
+  #logo{
+    font-family: 'Anton', sans-serif;
+    font-size: 60px;
+    margin-right: 150px;
+    margin-top: 20px;
+  }
+  #item{
+    font-size: 25px;
+    font-family: 'Asap', sans-serif;
+    margin-right: 15px;
+  }
+  #card-down{
+    background-color: black;
+    color: silver;
+    
+  }
+  #item:hover{
+    background-color: rgba(192, 192, 192, 0.589);
+  }
+  
