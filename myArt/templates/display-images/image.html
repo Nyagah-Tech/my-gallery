@@ -1,0 +1,12 @@
+{% extends 'display-images/base.html'%}
+{% block content%}
+    {% if image %}
+    {% for img in image %}
+    <p>{{img.name}}</p>
+    {% endfor %}
+    {% else %}
+    <p>invalid option</p>
+    {% endif %}
+
+
+{% endblock %}
