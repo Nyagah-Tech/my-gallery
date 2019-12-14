@@ -27,6 +27,21 @@ class Gallery(models.Model):
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
     posted_by = models.DateTimeField(dt.datetime.now())
 
+    @classmethod
+    def get_all_images(cls):
+        images = cls.objects.all()
+
+        return images
+    
+    @classmethod
+    def get_images_category(cls,categorys):
+        images = cls.objects.filter(category = categorys)
+
+        return images
+
+    @classmethod
+    def get_images_by_location(cls,locations):
+        images = cls.objects.filter(location = locations)
 
     def __str__(self):
         return self.name
