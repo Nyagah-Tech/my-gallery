@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from django.http import HttpResponse,Http404
 import datetime as dt
-from .models import Gallery
+import pyperclip
+from .models import Gallery,Category,Location
 
 
 # Create your views here.
@@ -9,10 +10,7 @@ from .models import Gallery
 def landing_page(request):
     date = dt.date.today()
     images = Gallery.get_all_images()
+    locations = Location.get_all_locations()
+    category = Category.get_all_categories()
+    return render(request,'display-images/landing.html',{"date":date,"images":images,"category":category,"locations":locations})
 
-    return render(request,'display-images/landing.html',{"date":date,"images":images})
-
-def image_section(request,image_id):
-    image =Gallery.get_image_by_id(image_id)
-
-    return render(request, 'display-images/image.html',{"image":image} )
