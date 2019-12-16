@@ -1,12 +1,30 @@
 {% extends 'display-images/base.html'%}
 {% block content%}
-    {% if image %}
-    {% for img in image %}
-    <p>{{img.name}}</p>
-    {% endfor %}
-    {% else %}
-    <p>invalid option</p>
-    {% endif %}
+{% if image %}
+{% for img in image %}
+<div class="container">
+    <div class="card-columns" >
+        <h2>{{img.name}}</h2>
+        
+            <center>
+                <img src="{{img.picture.url}}" alt="" data-target="#extraModal{{image.id}}" data-toggle="modal" width="200px" height="350px">
+            </center>
+            <div class="description text-center" style="margin-top: 20px;">
+                <p><b>Category: </b>{{img.category}}</p>
+                <p><b>Location: </b>{{img.location}}</p>
+                <p><b>Description</b> {{img.description}}</p>
+        
+        </div>
+        <div class="card-footer">
+            <p><i>posted on </i>{{img.posted_by}} <i>by</i> {{img.owner}}</p>
+        </div>
+    </div>
+</div>
+{% endfor %}
+{% else %}
+
+<p>invalid option</p>
+{% endif %}
 
 
 {% endblock %}
