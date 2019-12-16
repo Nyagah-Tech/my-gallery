@@ -20,3 +20,11 @@ def image_section(request,id):
     category = Category.get_all_categories()
 
     return render(request, 'display-images/image.html',{"image":image,"category":category,"locations":locations})
+def category(request,id):
+    category = Category.get_all_categories()
+    locations = Location.get_all_locations()
+    images = Gallery.get_images_category(id)
+    title = Category.get_category_by_id(id)
+
+    return render(request, 'display-images/category.html',{ "title":title,"images":images,"category":category,"locations":locations})
+
