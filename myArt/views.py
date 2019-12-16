@@ -49,3 +49,16 @@ def copy(request,imageUrl):
     locations = Location.get_all_locations()
     category = Category.get_all_categories()
     return render(request,'display-images/copy.html',{"date":date,"images":images,"category":category,"locations":locations,"final_url":final_url})
+def search_term(request):
+    if 'image' in request.GET and request.GET["image"]:
+        term = request.GET.get("image")
+        image_result= Gallery.get_image_by_name(term)
+        category = Category.get_all_categories()
+        locations = Location.get_all_locations()
+        message = f"{term}"
+        return render(request,"display-images/search.html",{"message":message,"image_result":image_result,"category":category,"locations":locations})
+    else:
+        message = "please enter a name at the input field"
+        category = Category.get_all_categories()
+        locations = Location.get_all_locations()
+        return render(request,"display-images/search.html",{"category":category,"locations":locations,"message":message})
