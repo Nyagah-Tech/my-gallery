@@ -1,12 +1,12 @@
 .nav{
     background-color: black;
-    color:silver;
+    color:white !important;
     
   }
   #logo{
     font-family: 'Anton', sans-serif;
     font-size: 60px;
-    margin-right: 150px;
+    margin-right: 50px;
     margin-top: 20px;
   }
   #item{
@@ -16,7 +16,7 @@
   }
   #card-down{
     background-color: black;
-    color: silver;
+    color: white !important;
     
   }
   #item:hover{
