@@ -30,7 +30,10 @@ class Category(models.Model):
     def get_all_categories(cls):
         categories = cls.objects.all()
         return categories
-    
+    @classmethod
+    def get_category_by_id(cls,category_id):
+        category = cls.objects.filter(id = category_id)
+        return category
 
 
     def __str__(self):
