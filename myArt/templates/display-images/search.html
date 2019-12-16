@@ -1,0 +1,99 @@
+{% extends 'display-images/base.html'%}
+{% block content %}
+<style>
+    .card {
+        background-color: transparent
+    }
+
+    .button:active {
+        background-color: rgba(216, 148, 159, 0.938);
+        box-shadow: 0 5px #666;
+        transform: translateY(50px);
+    }
+
+    .button:hover {
+        background-color: rgb(228, 101, 122)
+    }
+
+    .button {
+        padding: 15px 25px;
+        font-size: 24px;
+        text-align: center;
+        cursor: pointer;
+        outline: none;
+        color: #fff;
+        background-color: rgb(228, 189, 189);
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 15px #999;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .card {
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        transition: 0.1s;
+
+    }
+
+    .card:hover {
+        box-shadow: 0 20px 26px 0 rgba(0, 0, 0, 0.2);
+        background-color: pink;
+    }
+
+    h1 {
+        font-family: 'Anton', sans-serif;
+        font-size: 100px;
+        margin-bottom: 25px;
+    }
+</style>
+<div class="container">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <div class="row">
+        {% if image_result %}
+        <h2>There are {{image_result|length}} images associated with the name {{message}}</h2>
+        {% else %}
+        <h2>There and 0 images with that name {{message}}</h2>
+        {% endif %}
+    </div>
+    <div class="row">
+        {% if image_result %}
+
+        <div class="row">
+            {% for image in image_result %}
+            <div class="col-md-6">
+                <div class="card">
+                    <h3 class="text-center">{{image.name}}</h3>
+                    <div class="card-body">
+                        <img src="{{image.picture.url}}" alt="" width="450px" height="400px">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="{% url 'image-section' image.id %}" class="btn button">view-more</a>
+
+                            </div>
+                            <div class="col-md-6">
+                                <button class="btn button">copy image url</button>
+                                <p><a
+                                        href="http://127.0.0.1:8000{{image.picture.url}}">http://127.0.0.1:8000/{{image.picture.url}}</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        {% empty %}
+        <p class="text-center">The {{categorys}} category has no images associated to it.</p>
+        {% endfor %}
+        {% endif %}
+        <script>
+            $(document).ready(function () {
+                $('button').click(function () {
+                    $("p").toggle();
+                });
+            });  
+        </script>
+    </div>
+</div>
+{% endblock %}
