@@ -34,3 +34,9 @@ def get_categories(request):
 
     return render(request,'navbar.html',{"category":category,"locations":locations})
 
+def location(request,id):
+    category = Category.get_all_categories()
+    locations = Location.get_all_locations()
+    images = Gallery.get_images_by_location(id)
+    return render(request,'display-images/location.html',{"images":images,"locations":locations,"category":category})
+
