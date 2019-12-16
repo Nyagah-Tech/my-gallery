@@ -1,3 +1,4 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <title>W3.CSS</title>
@@ -7,35 +8,63 @@
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.0/css/bootstrap.min.css" rel="stylesheet"
   integrity="sha384-SI27wrMjH3ZZ89r4o+fGIJtnzkAnFs3E4qz9DIYioCQ5l9Rd/7UAa8DHcaL8jkWt" crossorigin="anonymous">
-<link rel="stylesheet" href="{% static 'css/navbar.css'%}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+<link rel="stylesheet" href="{% static 'css/navbar.css' %}">
 
 <body>
 
   <div class="nav">
     <div class="w3-bar " style="height: 150px;">
-      <a href="#" class="w3-bar-item btn" id="logo"><i>@Art-Gallery</i></a>
+      <a href="{% url 'landingPage'  %}" class="w3-bar-item btn" id="logo" style="color:  white !important;"><i>@Art-Gallery</i></a>
       <div id="nav_down" style="margin-top: 50px;"></div>
 
-      <a href="#" class="w3-bar-item btn" id="item">Link 1</a>
-      <div class="w3-dropdown-hover">
-        <button class="btn" id="item">Category</button>
-        <div class="w3-dropdown-content w3-bar-block w3-card-4" id="card-down">
-          <a href="#" class="w3-bar-item  btn " id="item">Link 1</a>
-          <a href="#" class="w3-bar-item  btn " id="item">Link 2</a>
-          <a href="#" class="w3-bar-item btn " id="item">Link 3</a>
-        </div>
-      </div>
+      <div style="float: right !important;" >
 
-      <div class="w3-dropdown-hover">
-          <button class="btn" id="item">Category</button>
-          <div class="w3-dropdown-content w3-bar-block w3-card-4" id="card-down">
-            <a href="#" class="w3-bar-item  btn " id="item">Link </a>
-            <a href="#" class="w3-bar-item  btn " id="item">Link </a>
-            <a href="#" class="w3-bar-item btn " id="item">Link </a>
+        <div class="w3-dropdown-hover" style="color: white !important;">
+          <button class="btn" id="item">Location</button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4" style="color: white !important;" id="card-down">
+            {% for loca in locations %}
+            <a href="{% url 'location' loca.id %}" class="w3-bar-item  btn " id="item" style="color: white !important;">{{ loca.location}}</a>
+            {% empty %}
+            <a href="#" class="w3-bar-item  btn " id="item">no locations</a>
+            {% endfor %}
+          </div>
+        </div>
+        <div class="w3-dropdown-hover" style="color: white !important;">
+          <button class="btn" id="item" style="color: white !important;">Category</button>
+          <div class="w3-dropdown-content w3-bar-block w3-card-4" id="card-down" style="color: white !important;">
+            {% for cata in category %}
+            <a href="{% url 'category' cata.id %}"  class="w3-bar-item  btn " id="item"> <span style="color: white !important;"> {{cata.category}}</span> </a>
+            {% empty %}
+            <a href="#" class="w3-bar-item  btn " id="item">no categories</a>
+            {% endfor %}
           </div>
         </div>
 
+
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4"></div>
+          <div class="col-md-4">
+            <form class="navbar-form" role="search" action="{% url 'results' %}">
+
+              <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search by name" name="image">
+                <div class="input-group-btn">
+                  <button class="btn btn-outline-primary" type="submit"><i class="fa fa-search" aria-hidden="true"></i>
+                  </button>
+                </div>
+              </div>
+
+            </form>
+          </div>
+          <div class="col-md-4"></div>
+        </div>
+      </div>
     </div>
+
+
   </div>
   </div>
 
