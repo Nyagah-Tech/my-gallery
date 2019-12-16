@@ -40,3 +40,12 @@ def location(request,id):
     images = Gallery.get_images_by_location(id)
     return render(request,'display-images/location.html',{"images":images,"locations":locations,"category":category})
 
+def copy(request,imageUrl):
+    image_url = 'http://127.0.0.1:8000'
+    base_url = imageUrl
+    final_url = image_url + base_url
+    date = dt.date.today()
+    images = Gallery.get_all_images()
+    locations = Location.get_all_locations()
+    category = Category.get_all_categories()
+    return render(request,'display-images/copy.html',{"date":date,"images":images,"category":category,"locations":locations,"final_url":final_url})
