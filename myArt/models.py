@@ -15,12 +15,18 @@ class Owner(models.Model):
 class Location(models.Model):
     location = models.CharField(max_length = 50)
 
+    @classmethod
+    def get_all_locations(cls):
+        locations = cls.objects.all()
+        return locations
+
     def __str__(self):
         return self.location
 
 class Category(models.Model):
     category = models.CharField(max_length = 100)
 
+   
     def __str__(self):
         return self.category
 
@@ -57,7 +63,10 @@ class Gallery(models.Model):
         image = cls.objects.filter(id = id)
 
         return image
-
+    @classmethod
+    def get_image_by_name(cls,name):
+        image = cls.objects.filter(name = name)
+        return image
 
 
     def __str__(self):
