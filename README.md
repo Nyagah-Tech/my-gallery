@@ -1,11 +1,11 @@
-
 @Art-Gallery[https://github.com/Nyagah-Tech/my-gallery.git]
 This project was generated with [Python](https://www.python.org/) version 3.8.0 <br>
 
 ## Author: 
 Nyagah-Tech
 ## Description
-this is an application that enables users to views pictures as well as share links to thier favourite pictures.
+this is an 
+application that enables users to views pictures as well as share links to thier favourite pictures.
 
 ## User Stories
 *The user can view images according to category and also location
@@ -57,4 +57,4 @@ this is an application that enables users to views pictures as well as share lin
 
 ## Support and contact details
  Incase of a problem, issue or need more clarification, feel free to send an email<br>danmuv11@gmail.com<br>
- Contact Pyra at : 0790476167
+ 
