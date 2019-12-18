@@ -49,6 +49,9 @@ class Gallery(models.Model):
     category = models.ForeignKey(Category, on_delete = models.CASCADE)
     posted_by = models.DateTimeField(dt.datetime.now())
 
+    def delete(self):
+        self.delete()
+
     @classmethod
     def get_all_images(cls):
         images = cls.objects.all()
